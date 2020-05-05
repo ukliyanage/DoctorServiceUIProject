@@ -177,17 +177,27 @@ function validateItemForm() {
 	if ($("#phone").val().trim() == "") {
 		return "Insert Contact Number.";
 	}
-	// Email
-	if ($("#email").val().trim() == "") {
-		return "Insert email Address.";
-	}
 	
-//	var checkemail = $("#email").val().trim();
-//	if(!$.isValidEmailAddress(checkemail))
-//    {
-//		return "Insert valid email address";
-//    }
-//	
+	// Email
+/*	if ($("#email").val().trim() == "") {
+		return "Insert email Address.";
+	} 
+	*/
+	
+
+		
+		// Email
+		if ($("#email").val().trim() == "") {
+			return "Insert email Address.";
+		}
+		
+		var statusemail = validateEmail();	
+		if( statusemail != true ){
+			return "Invalid Email Address";
+		}
+			
+	
+	
 	
 	// Address Line 1
 	if ($("#addressLine1").val().trim() == "") {
@@ -275,15 +285,20 @@ function validateItemForm() {
 
 	return true;
 }
-/*
-//----------------------
-function isValidEmailAddress(emailAddress) {
-    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-    return pattern.test(emailAddress);
-}
 
-//--------------------------
-*/
+
+function validateEmail() {
+    var emailID = document.formDoctor.email.value;
+    atpos = emailID.indexOf("@");
+    dotpos = emailID.lastIndexOf(".");
+    
+    if (atpos < 1 || ( dotpos - atpos < 2 )) {
+       //alert("Please enter correct email ID")
+       document.formDoctor.email.focus() ;
+       return false;
+    }
+    return( true );
+ }
 
 
 
@@ -358,6 +373,10 @@ function viewDoctors(data) {
 
 	$("#doctorTable tbody").append(content);
 }
+
+
+
+
 
 function refresh() {
 
