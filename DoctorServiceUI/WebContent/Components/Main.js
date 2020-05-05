@@ -77,6 +77,8 @@ $(document)
 						}
 					});
 				});
+
+
 // UPDATE==========================================
 $(document)
 		.on(
@@ -153,6 +155,8 @@ $(document)
 					}
 				});
 
+
+
 // CLIENTMODEL=========================================================================
 function validateItemForm() {
 	// First Name
@@ -177,6 +181,14 @@ function validateItemForm() {
 	if ($("#email").val().trim() == "") {
 		return "Insert email Address.";
 	}
+	
+//	var checkemail = $("#email").val().trim();
+//	if(!$.isValidEmailAddress(checkemail))
+//    {
+//		return "Insert valid email address";
+//    }
+//	
+	
 	// Address Line 1
 	if ($("#addressLine1").val().trim() == "") {
 		return "Insert Address Line 1.";
@@ -226,6 +238,17 @@ function validateItemForm() {
 	if ($("#charge").val().trim() == "") {
 		return "Insert Doctor Charge.";
 	}
+		
+	//is numerical value
+	var tmpCharge = $("#charge").val().trim();
+	if (!$.isNumeric(tmpCharge))
+	{
+		return "Insert a numerical value for Doctor Charge.";
+	}
+	//convert to decimal price
+	$("#charge").val(parseFloat(tmpCharge).toFixed(2));	
+		
+		
 	
 	// Username
 	if ($("#username").val().trim() == "") {
@@ -252,6 +275,17 @@ function validateItemForm() {
 
 	return true;
 }
+/*
+//----------------------
+function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    return pattern.test(emailAddress);
+}
+
+//--------------------------
+*/
+
+
 
 function onItemSaveComplete(response, status) {
 	if (status == "success") {

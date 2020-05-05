@@ -27,10 +27,10 @@
 					NIC: <input id="nic" name="nic" type="text"
 						class="form-control form-control-sm"> <br> 
 				
-					Phone: <input id="phone" name="phone" type="text"
+					Phone: <input id="phone" name="phone" type="number"
 						class="form-control form-control-sm"> <br>
 				
-					Email: <input id="email" name="email" type="email"
+					Email: <input id="email" name="email" type="email" 
 						class="form-control form-control-sm"> <br>
 				
 					Address Line 1: <input id="addressLine1" name="addressLine1" type="text"
