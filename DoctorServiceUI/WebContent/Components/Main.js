@@ -178,26 +178,17 @@ function validateItemForm() {
 		return "Insert Contact Number.";
 	}
 	
+		
 	// Email
-/*	if ($("#email").val().trim() == "") {
+	if ($("#email").val().trim() == "") {
 		return "Insert email Address.";
-	} 
-	*/
-	
-
+	}
 		
-		// Email
-		if ($("#email").val().trim() == "") {
-			return "Insert email Address.";
-		}
-		
-		var statusemail = validateEmail();	
-		if( statusemail != true ){
-			return "Invalid Email Address";
-		}
-			
-	
-	
+	var statusemail = validateEmail();	
+	if( statusemail != true ){
+		return "Invalid Email Address";
+	}
+				
 	
 	// Address Line 1
 	if ($("#addressLine1").val().trim() == "") {
